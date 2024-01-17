@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atedesch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/17 16:11:37 by atedesch          #+#    #+#             */
-/*   Updated: 2024/01/17 18:11:15 by atedesch         ###   ########.fr       */
+/*   Created: 2024/01/17 17:28:17 by atedesch          #+#    #+#             */
+/*   Updated: 2024/01/17 17:42:17 by atedesch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+char	*ft_strdup(const char *s1)
 {
-	int	neg;
-	int	num;
+	size_t	len;
+	char	*copy;
 
-	neg = 1;
-	num = 0;
-	while (*str == ' ' || (*str >= 9 && *str <= 13))
-		str++;
-	if (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-			neg *= -1;
-		str++;
-	}
-	while (*str >= '0' && *str <= '9')
-	{
-		num = num * 10 + (*str - '0');
-		str++;
-	}
-	return (num * neg);
+	len = ft_strlen(s1) + 1;
+	copy = (char *)malloc(sizeof(char) * len);
+	if (!copy)
+		return (NULL);
+	ft_memcpy(copy, s1, len);
+	return (copy);
 }
