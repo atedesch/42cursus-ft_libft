@@ -1,39 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atedesch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 17:31:28 by atedesch          #+#    #+#             */
-/*   Updated: 2024/01/17 13:00:22 by atedesch         ###   ########.fr       */
+/*   Created: 2024/01/17 14:39:29 by atedesch          #+#    #+#             */
+/*   Updated: 2024/01/17 15:09:32 by atedesch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	size_t	i;
-	size_t	j;
-	char	*pt_src;
+	unsigned char	*ptr;
 
-	pt_src = (char *)src;
-	i = 0;
-	while (i < size && *dst)
+	ptr = (unsigned char *)s;
+	c = (unsigned char)c;
+	while (n && *ptr != c)
 	{
-		dst++;
-		i++;
+		ptr++;
+		n--;
 	}
-	if (i == size)
-		return (i + ft_strlen(src));
-	j = 0;
-	while (pt_src[j])
-	{
-		if (j < size - i - 1)
-			*dst++ = pt_src[j];
-		j++;
-	}
-	*dst = 0;
-	return (j + i);
+	if (n)
+		return ((void *)ptr);
+	return (NULL);
 }
