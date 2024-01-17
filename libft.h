@@ -6,7 +6,7 @@
 /*   By: atedesch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:00:45 by atedesch          #+#    #+#             */
-/*   Updated: 2024/01/17 18:53:13 by atedesch         ###   ########.fr       */
+/*   Updated: 2024/01/17 19:41:25 by atedesch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 
 void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *s, int fd);
 
 #endif
