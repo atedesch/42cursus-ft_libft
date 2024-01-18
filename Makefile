@@ -6,7 +6,7 @@
 #    By: atedesch <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/16 11:00:48 by atedesch          #+#    #+#              #
-#    Updated: 2024/01/18 23:38:47 by atedesch         ###   ########.fr        #
+#    Updated: 2024/01/19 00:43:28 by atedesch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,9 +40,13 @@ mandatory		= isalpha \
 					substr \
 					strjoin \
 					strtrim \
+					split \
 					itoa \
+					strmapi \
+					striteri \
 					putchar_fd \
 					putstr_fd \
+					putendl_fd \
 					putnbr_fd
 
 SRCS			= $(mandatory:%=$(prefix)%.c)
