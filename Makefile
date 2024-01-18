@@ -6,29 +6,68 @@
 #    By: atedesch <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/16 11:00:48 by atedesch          #+#    #+#              #
-#    Updated: 2024/01/17 15:10:46 by atedesch         ###   ########.fr        #
+#    Updated: 2024/01/18 18:11:01 by atedesch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME=libft.a
+library			= libft
 
-SRCS=${wildcard *.c}
+prefix			= ft_
 
-OBJECTS=${SRCS:.c=.o}
+mandatory		= isalpha \
+					isdigit \
+					isalnum \
+					isascii \
+					isprint \
+					strlen \
+					memset \
+					bzero \
+					memcpy \
+					memmove \
+					strlcpy \
+					strlcat \
+					toupper \
+					tolower \
+					strchr \
+					strrchar \
+					strncmp \
+					memchr \
+					memcmp \
+					strnstr \
+					atoi \
+					calloc \
+					strdup \
+					substr \
+					strjoin \
+					putchar_fd \
+					putstr_fd
 
-INCLUDES=./
+SRCS			= $(mandatory:%=$(prefix)%.c)
 
-all: $(NAME)
+OBJS			= $(SRCS:.c=.o)
+
+CC				= gcc
+RM				= rm -f
+CFLAGS			= -Wall -Wextra -Werror
+INCLUDES		= ./
+
+OUTN 			= $(library).a
+
+NAME			= $(OUTN)
 
 $(NAME): $(SRCS) libft.h
-	@gcc -Wall -Wextra -Werror -I$(INCLUDES) -c $(SRCS)
-	@ar rc $(NAME) $(OBJECTS)
+	$(CC) $(CFLAGS) -I$(INCLUDES) -c $(SRCS)
+	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
 
+all: 	$(NAME)
+
 clean:
-	@/bin/rm -f $(OBJECTS)
+		@/bin/$(RM) $(OBJS)
 
 fclean: clean
-	@/bin/rm -f $(NAME)
+		@/bin/$(RM) $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re
