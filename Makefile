@@ -6,7 +6,7 @@
 #    By: atedesch <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/16 11:00:48 by atedesch          #+#    #+#              #
-#    Updated: 2024/01/19 10:58:30 by atedesch         ###   ########.fr        #
+#    Updated: 2024/01/19 18:03:27 by atedesch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,8 +49,16 @@ mandatory_ft	= isalpha \
 					putendl_fd \
 					putnbr_fd
 
-bonus_ft		= lstnew
-
+bonus_ft		= lstnew \
+					lstadd_front \
+					lstsize \
+					lstlast \
+					lstadd_back \
+					lstdelone \
+					lstclear \
+					lstiter \
+					lstmap
+					
 SRCS			= $(mandatory_ft:%=$(prefix)%.c)
 
 OBJS			= $(SRCS:.c=.o)
@@ -73,21 +81,21 @@ OUTN 			= $(library).a
 NAME			= $(OUTN)
 
 $(NAME):	$(SRCS) $(HEADER)
-	$(CC) $(CFLAGS) -g -c -I$(INCLUDES) $(SRCS)
+	$(CC) $(CFLAGS) -c -g -I$(INCLUDES) $(SRCS)
 	$(RN) $(NAME) $(OBJS)
 	$(LB) $(NAME)
 
 all:	$(NAME)
 
 clean:
-	@/bin/$(RM) $(OBJS) $(BONUS_OBJS)
+	$(RM) $(OBJS) $(BONUS_OBJS)
 
 fclean:	clean
-	@/bin/$(RM) $(NAME)
-
-re:	fclean all
+	$(RM) $(NAME)
 
 bonus:	$(OBJS) $(BONUS_OBJS)
-	$(RN) $(NAME) $(OBJS) $(BONUS_OBJS)	
+	$(RN) $(NAME) $(OBJS) $(BONUS_OBJS)
+
+re: fclean all
 
 .PHONY:	all clean fclean re bonus
