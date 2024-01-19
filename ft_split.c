@@ -6,7 +6,7 @@
 /*   By: atedesch <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 00:44:13 by atedesch          #+#    #+#             */
-/*   Updated: 2024/01/19 00:45:00 by atedesch         ###   ########.fr       */
+/*   Updated: 2024/01/19 01:10:37 by atedesch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@ static void	ft_allocate(char **tab, char const *s, char sep)
 	while (*tmp)
 	{
 		while (*s == sep)
-			++s;
+			s++;
 		tmp = s;
 		while (*tmp && *tmp != sep)
-			++tmp;
+			tmp++;
 		if (*tmp == sep || tmp > s)
 		{
 			*tab1 = ft_substr(s, 0, tmp - s);
 			s = tmp;
-			++tab1;
+			tab1++;
 		}
 	}
 	*tab1 = NULL;
